@@ -57,7 +57,7 @@ sudo ./setup_before_reboot.sh
 5. Update flake.nix:
     ```bash
     sed -i -e 's/theiiird/YOUR_USERNAME/g' \
-       -e '/{ hostname = "nixos-blank"; stateVersion = "24.05"; }/d' \
+       -e '/{ hostname = "nixos-blank"; stateVersion = "24.11"; }/d' \
        -e 's/hostname = "nixos"/hostname = "YOUR_HOSTNAME"/' \
        -e 's/stateVersion = "24.11"/stateVersion = "YOUR_NIXOS_VERSION"/' \
        -e 's/homeStateVersion = "24.11";/homeStateVersion = "YOUR_HM_VERSION";/' \
@@ -74,7 +74,7 @@ sudo ./setup_before_reboot.sh
     ++  user = "YOUR_USERNAME";
         hosts = [
     --    { hostname = "nixos"; stateVersion = "24.11"; }
-    --    { hostname = "nixos-blank"; stateVersion = "24.05"; }
+    --    { hostname = "nixos-blank"; stateVersion = "24.11"; }
     ++    { hostname = "YOUR_HOSTNAME"; stateVersion = "YOUR_NIXOS_VERSION"; }
         ];
     ...
