@@ -5,8 +5,6 @@
   };
 
   environment = {
-    sessionVariables.NIXOS_OZONE_WL = "1";
-
     gnome.excludePackages = with pkgs; [
       decibels
       geary
@@ -27,6 +25,7 @@
       fragments
       gapless
       gnome-tweaks
+      helvum
       mission-center
       ptyxis
       rnote
