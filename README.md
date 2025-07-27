@@ -17,15 +17,12 @@ Modern NixOS configuration focused on productivity and aesthetics. Perfect for d
 
 ### Quick Setup (Beta)
 ```bash
-git clone https://github.com/TheIIIrd/nixos-workstation.git
-cd nixos-workstation
-chmod +x setup_*.sh
-sudo ./setup_before_reboot.sh
+bash <(curl -s https://raw.githubusercontent.com/TheIIIrd/nixos-workstation/refs/heads/main/setup_before_reboot.sh)
 ```
 
 ```bash
 # After reboot:
-./setup_after_reboot.sh
+bash <(curl -s https://raw.githubusercontent.com/TheIIIrd/nixos-workstation/refs/heads/main/setup_after_reboot.sh)
 ```
 
 ### Manual Configuration
