@@ -9,7 +9,6 @@
     easyeffects
     gparted
     kdePackages.kdenlive
-    librewolf
     mangohud
     # mcontrolcenter
 
