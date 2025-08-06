@@ -131,7 +131,7 @@ function backup_existing_host {
     local hostname="$1"
     local repo_dir="$HOME/.nix/hosts"
     local backup_count=1
-    local backup_dir="${hostname}.backup-${backup_count}"
+    local backup_dir="${hostname}-backup-${backup_count}"
 
     # Find next available backup directory name
     while [ -d "$repo_dir/$backup_dir" ]; do
@@ -141,12 +141,16 @@ function backup_existing_host {
 
     echo_info "Backing up existing configuration to $backup_dir"
     mv "$repo_dir/$hostname" "$repo_dir/$backup_dir"
+    
+    # Return backup directory name
+    echo "$backup_dir"
 }
 
 function configure_host {
     local hostname="$1"
     local template="$2"
     local repo_dir="$HOME/.nix"
+    local backup_dir_name=""
 
     cd "$repo_dir/hosts" || { echo_error "Failed to enter hosts directory"; exit 1; }
 
@@ -154,7 +158,7 @@ function configure_host {
     if [ -d "$hostname" ]; then
         echo_warn "Configuration for $hostname already exists!"
         if ask_confirmation "Backup existing configuration?"; then
-            backup_existing_host "$hostname"
+            backup_dir_name=$(backup_existing_host "$hostname")
         else
             if ask_confirmation "Overwrite existing configuration?"; then
                 echo_info "Removing existing configuration..."
@@ -166,29 +170,35 @@ function configure_host {
         fi
     fi
 
-    # Check if template exists, otherwise use fallback
-    if [ ! -d "$template" ]; then
-        echo_warn "Template $template not found! Using fallback templates..."
+    # Use backup if hostname matches template and backup exists
+    if [ "$hostname" = "$template" ] && [ -n "$backup_dir_name" ]; then
+        echo_info "Creating configuration for host $hostname from backup $backup_dir_name..."
+        cp -r "$backup_dir_name" "$hostname"
+    else
+        # Check if template exists, otherwise use fallback
+        if [ ! -d "$template" ]; then
+            echo_warn "Template $template not found! Using fallback templates..."
 
-        local fallback_template=""
-        for t in nixos nixos-laptop; do
-            if [ -d "$t" ]; then
-                fallback_template="$t"
-                break
+            local fallback_template=""
+            for t in nixos nixos-laptop; do
+                if [ -d "$t" ]; then
+                    fallback_template="$t"
+                    break
+                fi
+            done
+
+            if [ -z "$fallback_template" ]; then
+                echo_error "No valid templates found in hosts directory!"
+                exit 1
             fi
-        done
 
-        if [ -z "$fallback_template" ]; then
-            echo_error "No valid templates found in hosts directory!"
-            exit 1
+            echo_info "Using fallback template: $fallback_template"
+            template="$fallback_template"
         fi
 
-        echo_info "Using fallback template: $fallback_template"
-        template="$fallback_template"
+        echo_info "Creating configuration for host $hostname from template $template..."
+        cp -r "$template" "$hostname"
     fi
-
-    echo_info "Creating configuration for host $hostname from template $template..."
-    cp -r "$template" "$hostname"
 
     cd "$hostname" || { echo_error "Failed to enter host directory"; exit 1; }
 
