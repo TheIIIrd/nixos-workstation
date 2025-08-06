@@ -46,7 +46,12 @@ function check_requirements {
 function get_config_values {
     local default_username="${USER}"
     local default_hostname="${HOSTNAME}"
-    local default_state_version=$(grep 'system.stateVersion' /etc/nixos/configuration.nix | awk -F'"' '{print $2}')
+
+    if [ -f /etc/nixos/configuration.nix ]; then
+        default_state_version=$(grep 'system.stateVersion' /etc/nixos/configuration.nix | awk -F'"' '{print $2}')
+    else
+        default_state_version="24.11"
+    fi
     local default_home_manager_state_version="$default_state_version"
 
     read -r -p "$(echo_question "Enter your username [$default_username]: ")" username
@@ -108,7 +113,7 @@ function setup_repository {
 
         if ask_confirmation "Would you like to switch branches?"; then
             echo_info "Available branches:"
-            git branch -a
+            git --no-pager branch -a
 
             echo_question "Enter branch name to switch to (e.g., main, unstable): "
             read -r branch_name
@@ -131,7 +136,7 @@ function backup_existing_host {
     # Find next available backup directory name
     while [ -d "$repo_dir/$backup_dir" ]; do
         backup_count=$((backup_count + 1))
-        backup_dir="${hostname}.backup-${backup_count}"
+        backup_dir="${hostname}-backup-${backup_count}"
     done
 
     echo_info "Backing up existing configuration to $backup_dir"
@@ -188,7 +193,13 @@ function configure_host {
     cd "$hostname" || { echo_error "Failed to enter host directory"; exit 1; }
 
     echo_info "Copying hardware configuration..."
-    cp --no-preserve=mode /etc/nixos/hardware-configuration.nix .
+
+    if [ -f /etc/nixos/hardware-configuration.nix ]; then
+        cp --no-preserve=mode /etc/nixos/hardware-configuration.nix .
+    else
+        echo_error "hardware-configuration.nix not found in /etc/nixos!"
+        exit 1
+    fi
 }
 
 function edit_flake {
@@ -211,20 +222,20 @@ function edit_config_files {
     echo_info "Opening configuration files for editing..."
 
     files_to_edit=(
-        "local-packages.nix"
-        "../../home-manager/home-packages.nix"
-        "../../home-manager/modules/git.nix"
-        "../../nixos/modules/boot/default.nix"
-        "../../nixos/modules/desktop/default.nix"
-        "../../nixos/modules/graphics/default.nix"
+        "hosts/$hostname/local-packages.nix"
+        "home-manager/home-packages.nix"
+        "home-manager/modules/git.nix"
+        "nixos/modules/boot/default.nix"
+        "nixos/modules/desktop/default.nix"
+        "nixos/modules/graphics/default.nix"
     )
 
     for file in "${files_to_edit[@]}"; do
-        local full_path="$repo_dir/hosts/$hostname/$file"
+        local full_path="$repo_dir/$file"
         if [ -f "$full_path" ]; then
             nano "$full_path"
         else
-            echo_warn "File $file not found, skipping..."
+            echo_warn "File $full_path not found, skipping..."
         fi
     done
 }
