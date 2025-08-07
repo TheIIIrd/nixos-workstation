@@ -139,7 +139,6 @@ function backup_existing_host {
         backup_dir="${hostname}-backup-${backup_count}"
     done
 
-    echo_info "Backing up existing configuration to $backup_dir"
     mv "$repo_dir/$hostname" "$repo_dir/$backup_dir"
     
     # Return backup directory name
@@ -158,7 +157,7 @@ function configure_host {
     if [ -d "$hostname" ]; then
         echo_warn "Configuration for $hostname already exists!"
         if ask_confirmation "Backup existing configuration?"; then
-            backup_dir_name=$(backup_existing_host "$hostname")
+            backup_dir_name=$(backup_existing_host "$hostname" | tail -n 1)
         else
             if ask_confirmation "Overwrite existing configuration?"; then
                 echo_info "Removing existing configuration..."
