@@ -7,7 +7,7 @@ Modern NixOS configuration focused on productivity and aesthetics. Perfect for d
 ## ✨ Key Features
 - 🖥️ **Multi-Host Support** - Configure multiple machines from one codebase
 - 🏠 **Home Manager Integration** - Unified user environment management
-- ⌨️ **Terminal Productivity** - Custom tmux keybindings and optimized Zsh setup
+- ⌨️ **Terminal Productivity** - Optimized Zsh with pre-installed plugins
 - 🌟 **Visual Consistency** - Pre-configured themes and desktop environments
 
 ## 🚀 Getting Started
@@ -44,6 +44,8 @@ bash <(curl -s https://raw.githubusercontent.com/TheIIIrd/nixos-workstation/refs
    - `~/.nix/hosts/YOUR_HOSTNAME/local-packages.nix`
    - `~/.nix/home-manager/home-packages.nix`
    - `~/.nix/home-manager/modules/git.nix`
+   - `~/.nix/nixos/modules/desktop/default.nix`
+   - `~/.nix/nixos/modules/graphics/default.nix`
 
 4. Configure zapret (if needed):
    ```bash
