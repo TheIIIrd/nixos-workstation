@@ -88,9 +88,10 @@ setup_flatpak() {
     fi
 
     # Mask openh264 due to potential installation issues
-    if ask_confirmation "Some systems may experience issues with openh264 codec installation due to redistribution policies. Mask it to prevent potential conflicts?"; then
+    echo_warn "Some systems may experience issues with openh264 codec installation due to redistribution policies."
+    if ask_confirmation "Mask it to prevent potential conflicts?"; then
         echo_info "Masking openh264..."
-        flatpak mask com.cisco.openh264 2>/dev/null || echo_warn "Failed to mask openh264"
+        flatpak mask org.freedesktop.Platform.openh264 2>/dev/null || echo_warn "Failed to mask openh264"
 
         if ask_confirmation "Install ffmpeg-full as an alternative video codec solution?"; then
             echo_info "Installing ffmpeg-full..."
@@ -101,7 +102,7 @@ setup_flatpak() {
     local apps=(
         "ch.tlaun.TL:TL - Minecraft Launcher"
         "com.github.tchx84.Flatseal:Flatseal - Flatpak Permission Manager"
-        "com.heroicgameslauncher.hgl:HGL - Launch games from EGS, GOG, Amazon Games"
+        "com.heroicgameslauncher.hgl:HGL - Games Launcher for the EGS, GOG and Amazon Games"
         "page.codeberg.libre_menu_editor.LibreMenuEditor:Main Menu - Menu Editor"
     )
 
