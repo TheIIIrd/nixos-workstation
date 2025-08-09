@@ -17,12 +17,12 @@ Modern NixOS configuration focused on productivity and aesthetics. Perfect for d
 
 ### Quick Setup (Beta)
 ```bash
-bash <(curl -s https://raw.githubusercontent.com/TheIIIrd/nixos-workstation/refs/heads/main/setup_before_reboot.sh)
+bash <(curl -s https://raw.githubusercontent.com/TheIIIrd/nixos-workstation/refs/heads/main/install.sh)
 ```
 
 ```bash
 # After reboot:
-bash <(curl -s https://raw.githubusercontent.com/TheIIIrd/nixos-workstation/refs/heads/main/setup_after_reboot.sh)
+bash <(curl -s https://raw.githubusercontent.com/TheIIIrd/nixos-workstation/refs/heads/main/postinstall.sh)
 ```
 
 ### Manual Configuration
@@ -43,7 +43,6 @@ bash <(curl -s https://raw.githubusercontent.com/TheIIIrd/nixos-workstation/refs
 3. Update configurations (edit these files):
    - `~/.nix/hosts/YOUR_HOSTNAME/local-packages.nix`
    - `~/.nix/home-manager/home-packages.nix`
-   - `~/.nix/home-manager/modules/git.nix`
    - `~/.nix/nixos/modules/desktop/default.nix`
    - `~/.nix/nixos/modules/graphics/default.nix`
 
