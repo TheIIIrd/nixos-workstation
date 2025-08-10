@@ -156,6 +156,7 @@ configure_host() {
     local repo_dir="${HOME}/.nix"
     local hosts_dir="${repo_dir}/hosts"
     local backup_dir_name=""
+    local valid_template="$template"
     
     cd "$hosts_dir" || { echo_error "Failed to enter hosts directory"; exit 1; }
 
@@ -165,6 +166,12 @@ configure_host() {
         if ask_confirmation "Backup existing configuration?"; then
             backup_dir_name=$(backup_existing_host "$hostname")
             echo_info "Backup created: ${backup_dir_name}"
+
+            # If the host name matches the template, we use a backup copy as a valid template
+            if [[ "$hostname" == "$template" ]]; then
+                valid_template="$backup_dir_name"
+                echo_info "Using backup as template: $valid_template"
+            fi
         elif ask_confirmation "Overwrite existing configuration?"; then
             rm -rf -- "$hostname"
         else
@@ -173,9 +180,9 @@ configure_host() {
         fi
     fi
 
-    # Choosing a template
-    local valid_template="$template"
+    # Checking the existence of a template
     if [[ ! -d "$valid_template" ]]; then
+        # Search for a backup template
         for fallback in "nixos" "nixos-laptop"; do
             if [[ -d "$fallback" ]]; then
                 valid_template="$fallback"
@@ -183,7 +190,14 @@ configure_host() {
                 break
             fi
         done
-        [[ ! -d "$valid_template" ]] && { echo_error "No valid templates found"; exit 1; }
+
+        # Checking the success of the search
+        if [[ ! -d "$valid_template" ]]; then
+            echo_error "No valid templates found in: $hosts_dir"
+            echo_error "Available directories:"
+            ls -d -- */ | sed 's|/$||'
+            exit 1
+        fi
     fi
 
     # Copying the configuration
@@ -194,9 +208,10 @@ configure_host() {
     cd "$hostname" || exit 1
     local hardware_src="/etc/nixos/hardware-configuration.nix"
     if [[ -f "$hardware_src" ]]; then
-        cp -- "$hardware_src" .
+        cp --no-preserve=mode -- "$hardware_src" .
+        echo_info "Hardware configuration copied"
     else
-        echo_error "Missing hardware-configuration.nix"
+        echo_error "Missing hardware-configuration.nix at $hardware_src"
         exit 1
     fi
 }
