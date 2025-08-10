@@ -15,7 +15,7 @@ Modern NixOS configuration focused on productivity and aesthetics. Perfect for d
 ### Prerequisites
 - NixOS installed ([official guide](https://nixos.org/manual/nixos/stable/#sec-installation))
 
-### Quick Setup (Beta)
+### Quick Setup
 ```bash
 bash <(curl -s https://raw.githubusercontent.com/TheIIIrd/nixos-workstation/refs/heads/main/install.sh)
 ```
