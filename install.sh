@@ -195,7 +195,7 @@ configure_host() {
         if [[ ! -d "$valid_template" ]]; then
             echo_error "No valid templates found in: $hosts_dir"
             echo_error "Available directories:"
-            ls -d -- */ | sed 's|/$||'
+            find . -maxdepth 1 -type d -printf '%f\n' | tail -n +2
             exit 1
         fi
     fi
@@ -280,8 +280,15 @@ clean_repository() {
         rm -rf .git .gitignore
     fi
 
-    [[ -d "screenshots" ]] && ask_confirmation "Remove screenshots?" && rm -rf screenshots
-    [[ -f "flake.lock" ]] && ask_confirmation "Remove flake.lock?" && rm -f flake.lock
+    if [[ -d "screenshots" ]] && ask_confirmation "Remove screenshots?"; then
+        echo_info "Removing screenshots folder..."
+        rm -rf screenshots
+    fi
+
+    if [[ -f "flake.lock" ]] && ask_confirmation "Remove flake.lock?"; then
+        echo_info "Removing flake.lock file..."
+        rm flake.lock
+    fi
 }
 
 rebuild_system() {
