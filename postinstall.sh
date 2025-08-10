@@ -208,19 +208,12 @@ setup_folder_structure() {
         ["${base_dir}/WorkBench"]="Workspace"
     )
 
-    local created_count=0
     for folder in "${!folders[@]}"; do
         if [[ ! -d "$folder" ]]; then
             echo_info "Creating: ${folders[$folder]}"
-            if mkdir -p -- "$folder"; then
-                ((created_count++))
-            else
-                echo_warn "Failed to create: $folder"
-            fi
+            mkdir -p -- "$folder"
         fi
     done
-
-    echo_info "Created ${created_count} folders"
 }
 
 main() {
