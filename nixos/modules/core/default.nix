@@ -1,6 +1,6 @@
 {
   imports = [
-    ./amnezia.nix
+    # ./amnezia.nix
     ./audio.nix
     ./bluetooth.nix
     ./env.nix
@@ -21,6 +21,7 @@
     ./trim.nix
     ./user.nix
     ./virt-manager.nix
+    # ./wireguard.nix
     # ./yggdrasil.nix
     ./zapret.nix
     ./zerotierone.nix

@@ -10,8 +10,8 @@
     firewall = {
       enable = true;
       allowPing = false;
-      # allowedTCPPorts = [ 25565 ];
-      # allowedUDPPorts = [ 25565 ];
+      allowedTCPPorts = [ 25565 51820 ];
+      allowedUDPPorts = [ 25565 51820 ];
     };
   };
 }
