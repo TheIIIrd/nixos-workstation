@@ -247,6 +247,7 @@ edit_config_files() {
         "nixos/modules/boot/default.nix"
         "nixos/modules/desktop/default.nix"
         "nixos/modules/graphics/default.nix"
+        "nixos/modules/core/default.nix"
     )
     
     echo_info "Opening configuration files for editing..."
@@ -267,7 +268,7 @@ handle_zapret() {
     fi
     
     if ask_confirmation "Edit zapret configuration?"; then
-        nano "${HOME}/.nix/nixos/modules/core/zapret.nix"
+        nano "${HOME}/.nix/nixos/modules/network/zapret.nix"
     fi
 }
 

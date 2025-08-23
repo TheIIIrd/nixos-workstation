@@ -2,7 +2,7 @@
   programs.git = {
     enable = true;
 
-    # userName = "<your_git_username>";
-    # userEmail = "<your_git_email>";
+    # userName = "YOUR_GIT_USERNAME";
+    # userEmail = "YOUR_GIT_EMAIL";
   };
 }

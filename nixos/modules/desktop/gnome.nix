@@ -36,7 +36,7 @@
       caffeine
       clipboard-indicator
       dash-to-panel
-      just-perfection
+      # just-perfection
       vitals
     ]);
   };
