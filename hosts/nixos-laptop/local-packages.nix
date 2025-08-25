@@ -22,6 +22,7 @@
     libva-utils
     libva
     wget
+    wireguard-tools
 
     # GStreamer
     gst_all_1.gstreamer

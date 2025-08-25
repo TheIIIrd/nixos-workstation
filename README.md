@@ -1,4 +1,4 @@
-# ❄️ NixOS Workstation Reborn
+# ❄️ NixOS Workstation
 
 Modern NixOS configuration focused on productivity and aesthetics. Perfect for developers and power users.
 
