@@ -21,6 +21,7 @@
     lshw
     libva-utils
     libva
+    usbutils
     wget
     wireguard-tools
 
