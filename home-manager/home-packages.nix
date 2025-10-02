@@ -6,7 +6,7 @@
 
     # Desktop apps
     inkscape
-    kicad
+    # kicad
     krita
     obsidian
     onlyoffice-desktopeditors
@@ -15,6 +15,7 @@
     r2modman
     tenacity
     tor-browser
+    # ungoogled-chromium
     vesktop
     vscodium
 
