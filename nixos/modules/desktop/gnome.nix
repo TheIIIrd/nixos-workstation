@@ -7,6 +7,7 @@
   environment = {
     gnome.excludePackages = with pkgs; [
       decibels
+      epiphany
       geary
       gnome-contacts
       gnome-maps
@@ -28,14 +29,13 @@
       helvum
       mission-center
       ptyxis
-      rnote
     ]) ++ (with pkgs.gnomeExtensions; [
       appindicator
-      arcmenu
+      # arcmenu
       blur-my-shell
       caffeine
       clipboard-indicator
-      dash-to-panel
+      # dash-to-panel
       # just-perfection
       vitals
     ]);
