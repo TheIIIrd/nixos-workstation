@@ -20,7 +20,7 @@
     vscodium
 
     # CLI utils
-    binwalk
+    # binwalk
     fastfetch
     ffmpeg
     file
@@ -37,7 +37,7 @@
     zip
 
     # Coding stuff
-    dotnet-sdk
+    # dotnet-sdk
     meson
     mono
     python313

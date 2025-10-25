@@ -1,5 +1,5 @@
 { pkgs, ... }: {
-  services.xserver = {
+  services = {
     displayManager.gdm.enable = true;
     desktopManager.gnome.enable = true;
   };
@@ -37,6 +37,7 @@
       clipboard-indicator
       # dash-to-panel
       # just-perfection
+      quick-lang-switch
       vitals
     ]);
   };
