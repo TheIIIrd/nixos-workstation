@@ -276,29 +276,27 @@ clean_repository() {
     local repo_dir="${HOME}/.nix"
     cd "$repo_dir" || return 1
 
-    if [[ -d ".git" ]] && ask_confirmation "Remove Git history?"; then
-        echo_info "Removing Git metadata..."
-        rm -rf .git .gitignore
-    fi
+    if ask_confirmation "Clean repository before rebuild?"; then
+        if [[ -d ".git" ]] && ask_confirmation "Remove Git history?"; then
+            echo_info "Removing Git metadata..."
+            rm -rf .git .gitignore
+        fi
 
-    if [[ -d "screenshots" ]] && ask_confirmation "Remove screenshots?"; then
-        echo_info "Removing screenshots folder..."
-        rm -rf screenshots
-    fi
+        if [[ -d "screenshots" ]] && ask_confirmation "Remove screenshots?"; then
+            echo_info "Removing screenshots folder..."
+            rm -rf screenshots
+        fi
 
-    if [[ -f "flake.lock" ]] && ask_confirmation "Remove flake.lock?"; then
-        echo_info "Removing flake.lock file..."
-        rm flake.lock
+        if [[ -f "flake.lock" ]] && ask_confirmation "Remove flake.lock?"; then
+            echo_info "Removing flake.lock file..."
+            rm flake.lock
+        fi
     fi
 }
 
 rebuild_system() {
     local repo_dir="${HOME}/.nix"
     cd "$repo_dir" || exit 1
-
-    if ask_confirmation "Clean repository before rebuild?"; then
-        clean_repository
-    fi
 
     if [[ -d ".git" ]]; then
         echo_info "Staging changes in git..."
@@ -320,6 +318,7 @@ main() {
     edit_flake
     edit_config_files
     handle_zapret
+    clean_repository
 
     if ask_confirmation "Rebuild system now?"; then
         rebuild_system
