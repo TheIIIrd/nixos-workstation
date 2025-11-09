@@ -51,8 +51,8 @@
     jetbrains-mono
     meslo-lgs-nf
     noto-fonts
+    noto-fonts-color-emoji
     noto-fonts-lgc-plus
-    noto-fonts-emoji
     font-awesome
     powerline-fonts
     powerline-symbols
