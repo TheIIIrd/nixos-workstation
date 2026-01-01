@@ -29,7 +29,7 @@
     mediainfo
     ripgrep
     shellcheck
-    silicon
+    # silicon
     texliveTeTeX
     tldr
     tree
