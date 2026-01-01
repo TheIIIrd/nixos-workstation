@@ -5,7 +5,7 @@
     # Packages in each category are sorted alphabetically
 
     # Desktop apps
-    inkscape
+    # inkscape
     # kicad
     krita
     obsidian
@@ -13,7 +13,7 @@
     protonplus
     protontricks
     r2modman
-    tenacity
+    # tenacity
     tor-browser
     # ungoogled-chromium
     vesktop
@@ -29,7 +29,7 @@
     mediainfo
     ripgrep
     shellcheck
-    silicon
+    # silicon
     texliveTeTeX
     tldr
     tree
@@ -51,8 +51,8 @@
     jetbrains-mono
     meslo-lgs-nf
     noto-fonts
+    noto-fonts-color-emoji
     noto-fonts-lgc-plus
-    noto-fonts-emoji
     font-awesome
     powerline-fonts
     powerline-symbols

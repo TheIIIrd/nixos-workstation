@@ -1,6 +1,7 @@
 { pkgs, ... }: {
   programs.librewolf = {
     enable = true;
+    package = pkgs.librewolf;
 
     settings = {
       "browser.bookmarks.defaultLocation" = "toolbar";
