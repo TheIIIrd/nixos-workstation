@@ -5,7 +5,7 @@
     # Packages in each category are sorted alphabetically
 
     # Desktop apps
-    inkscape
+    # inkscape
     # kicad
     krita
     obsidian
@@ -13,7 +13,7 @@
     protonplus
     protontricks
     r2modman
-    tenacity
+    # tenacity
     tor-browser
     # ungoogled-chromium
     vesktop
