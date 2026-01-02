@@ -9,11 +9,6 @@
   programs.dconf.enable = true;
 
   environment = {
-    plasma6.excludePackages = with pkgs.kdePackages; [
-      # plasma-browser-integration
-      ktorrent
-    ];
-
     systemPackages = (with pkgs; [
       okteta
       transmission_4-qt
@@ -24,7 +19,7 @@
       kcalc
       kcolorchooser
       kompare
-      merkuro
+      # merkuro
       partitionmanager
       sddm-kcm
     ]);
