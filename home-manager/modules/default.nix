@@ -5,7 +5,7 @@
     ./git.nix
     ./librewolf.nix
     ./neovim.nix
-    ./style.nix
+    # ./style.nix
     ./zsh.nix
   ];
 }
