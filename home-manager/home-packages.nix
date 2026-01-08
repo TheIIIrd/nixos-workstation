@@ -8,19 +8,17 @@
     # inkscape
     # kicad
     krita
-    obsidian
+    # obsidian
     onlyoffice-desktopeditors
     protonplus
     protontricks
     r2modman
-    # tenacity
     tor-browser
-    # ungoogled-chromium
+    ungoogled-chromium
     vesktop
     vscodium
 
     # CLI utils
-    # binwalk
     fastfetch
     ffmpeg
     file
@@ -29,10 +27,10 @@
     mediainfo
     ripgrep
     shellcheck
-    # silicon
     texliveTeTeX
     tldr
     tree
+    unrar-free
     unzip
     zip
 
