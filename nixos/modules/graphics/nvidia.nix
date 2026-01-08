@@ -3,7 +3,7 @@
     enable = true;
 
     extraPackages = with pkgs; [
-      cudaPackages.cudatoolkit
+      # cudaPackages.cudatoolkit
       egl-wayland
       nvidia-vaapi-driver
     ];
