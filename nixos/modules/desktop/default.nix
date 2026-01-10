@@ -1,7 +1,7 @@
 {
   imports = [
-    ./gnome.nix
-    # ./kde.nix
+    # ./gnome.nix
+    ./kde.nix
     ./xserver.nix
   ];
 }

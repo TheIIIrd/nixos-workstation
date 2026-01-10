@@ -228,10 +228,10 @@ edit_flake() {
         -v home_state="$home_manager_state_version" '
     {
         gsub(/theiiird/, user)
-        if (/{ hostname = "nixos-blank"; stateVersion = "24.11"; }/) next
+        if (/{ hostname = "nixos-blank"; stateVersion = "25.11"; }/) next
         gsub(/hostname = "nixos"/, "hostname = \"" host "\"")
-        gsub(/stateVersion = "24.11"/, "stateVersion = \"" state "\"")
-        gsub(/homeStateVersion = "24.11"/, "homeStateVersion = \"" home_state "\"")
+        gsub(/stateVersion = "25.11"/, "stateVersion = \"" state "\"")
+        gsub(/homeStateVersion = "25.11"/, "homeStateVersion = \"" home_state "\"")
         print
     }' "$flake_file" > "$tmp_file"
     

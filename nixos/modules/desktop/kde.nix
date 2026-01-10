@@ -1,6 +1,5 @@
 { pkgs, ... }: {
   services.displayManager = {
-    defaultSession = "plasma";
     sddm.enable = true;
     sddm.wayland.enable = true;
   };
@@ -20,7 +19,7 @@
       kcolorchooser
       kompare
       # merkuro
-      partitionmanager
+      # partitionmanager
       sddm-kcm
     ]);
   };

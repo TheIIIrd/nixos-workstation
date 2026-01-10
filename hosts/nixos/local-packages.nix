@@ -7,6 +7,7 @@
     # Desktop apps
     alacritty
     easyeffects
+    gnome-disk-utility
     gparted
     kdePackages.kdenlive
     mangohud
