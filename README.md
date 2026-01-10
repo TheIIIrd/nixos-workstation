@@ -2,7 +2,7 @@
 
 Modern NixOS configuration focused on productivity and aesthetics. Perfect for developers and power users.
 
-![Screenshot](./screenshots/screenshot-gnome-i.webp)
+![Screenshot](./screenshots/screenshot-kde-i.webp)
 
 ## ✨ Key Features
 - 🖥️ **Multi-Host Support** - Configure multiple machines from one codebase
@@ -109,4 +109,3 @@ Contributions welcome! Please:
 4. Push to branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-![Screenshot](./screenshots/screenshot-gnome-ii.webp)
