@@ -24,7 +24,7 @@
     file
     fzf
     git-graph
-    mediainfo
+    mumble
     ripgrep
     shellcheck
     texliveTeTeX
@@ -39,9 +39,8 @@
     meson
     mono
     python313
-    python313Packages.black
-    python313Packages.matplotlib
-    python313Packages.numpy
+    # python313Packages.matplotlib
+    # python313Packages.numpy
     python313Packages.pip
 
     # Fonts
