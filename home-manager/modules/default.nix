@@ -1,6 +1,6 @@
 {
   imports = [
-    ./bat.nix
+    # ./bat.nix
     ./eza.nix
     ./git.nix
     ./librewolf.nix
