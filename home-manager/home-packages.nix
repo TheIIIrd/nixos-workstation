@@ -8,7 +8,6 @@
     # inkscape
     # kicad
     krita
-    # obsidian
     onlyoffice-desktopeditors
     protonplus
     protontricks
@@ -37,11 +36,11 @@
     # Coding stuff
     # dotnet-sdk
     meson
-    mono
-    python313
-    # python313Packages.matplotlib
-    # python313Packages.numpy
-    python313Packages.pip
+    # mono
+    python314
+    # python314Packages.matplotlib
+    # python314Packages.numpy
+    python314Packages.pip
 
     # Fonts
     corefonts

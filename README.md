@@ -2,7 +2,7 @@
 
 Modern NixOS configuration focused on productivity and aesthetics. Perfect for developers and power users.
 
-![Screenshot](./screenshots/screenshot-kde-i.webp)
+![Screenshot](./screenshots/screenshot-kde-ii.webp)
 
 ## ✨ Key Features
 - 🖥️ **Multi-Host Support** - Configure multiple machines from one codebase

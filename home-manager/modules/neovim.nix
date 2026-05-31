@@ -4,7 +4,7 @@
 
     extraPackages = with pkgs; [
       lua-language-server
-      python313Packages.python-lsp-server
+      python314Packages.python-lsp-server
       nixd
     ];
   };
