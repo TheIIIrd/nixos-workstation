@@ -5,7 +5,7 @@
     # ./stubby.nix
     # ./wireguard.nix
     # ./yggdrasil.nix
-    ./zapret.nix
-    ./zerotierone.nix
+    # ./zapret.nix
+    # ./zerotierone.nix
   ];
 }
