@@ -38,14 +38,14 @@
 
     # Coding stuff
     android-tools
-    cargo
+    # cargo
     clang
     clang-tools
     cmake
     gcc
     gnumake
     ninja
-    rustc
+    # rustc
     zulu
   ];
 }
